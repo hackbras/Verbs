@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FerramentasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Ferramentas.dbo._VerbosIrregulares' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_VerbosIrregulares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="base_form" Type="varchar" MaxLength="255" />
+          <Property Name="past_form" Type="varchar" MaxLength="255" />
+          <Property Name="past_participle" Type="varchar" MaxLength="255" />
+          <Property Name="translate" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="teste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VerbosIrregulares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="base_form" Type="varchar" MaxLength="255" />
+          <Property Name="past_form" Type="varchar" MaxLength="255" />
+          <Property Name="past_participle" Type="varchar" MaxLength="255" />
+          <Property Name="translate" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="prioridade" Type="int" />
+        </EntityType>
+        <Function Name="fn_verbos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="translate" Type="varchar" Mode="In" />
+          <Parameter Name="base_form" Type="varchar" Mode="In" />
+          <Parameter Name="past_form" Type="varchar" Mode="In" />
+          <Parameter Name="past_participle" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="resultado" Type="varchar" MaxLength="3" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="FerramentasModelStoreContainer">
+          <EntitySet Name="teste" EntityType="Self.teste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerbosIrregulares" EntityType="Self.VerbosIrregulares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_VerbosIrregulares" EntityType="Self._VerbosIrregulares" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [_VerbosIrregulares].[id] AS [id], 
+    [_VerbosIrregulares].[base_form] AS [base_form], 
+    [_VerbosIrregulares].[past_form] AS [past_form], 
+    [_VerbosIrregulares].[past_participle] AS [past_participle], 
+    [_VerbosIrregulares].[translate] AS [translate]
+    FROM [dbo].[_VerbosIrregulares] AS [_VerbosIrregulares]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FerramentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fn_verbos_Result">
+          <Property Name="resultado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <EntityType Name="teste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VerbosIrregulare">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="base_form" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="past_form" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="past_participle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="translate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="prioridade" Type="Int32" />
+        </EntityType>
+        <EntityType Name="C_VerbosIrregulares">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="base_form" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="past_form" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="past_participle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="translate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="VerbosCS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="testes" EntityType="Self.teste" />
+          <EntitySet Name="VerbosIrregulares" EntityType="Self.VerbosIrregulare" />
+          <EntitySet Name="C_VerbosIrregulares" EntityType="Self.C_VerbosIrregulares" />
+          <FunctionImport Name="fn_verbos" IsComposable="true" ReturnType="Collection(FerramentasModel.fn_verbos_Result)">
+            <Parameter Name="translate" Mode="In" Type="String" />
+            <Parameter Name="base_form" Mode="In" Type="String" />
+            <Parameter Name="past_form" Mode="In" Type="String" />
+            <Parameter Name="past_participle" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FerramentasModelStoreContainer" CdmEntityContainer="VerbosCS">
+          <EntitySetMapping Name="testes">
+            <EntityTypeMapping TypeName="FerramentasModel.teste">
+              <MappingFragment StoreEntitySet="teste">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VerbosIrregulares">
+            <EntityTypeMapping TypeName="FerramentasModel.VerbosIrregulare">
+              <MappingFragment StoreEntitySet="VerbosIrregulares">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="base_form" ColumnName="base_form" />
+                <ScalarProperty Name="past_form" ColumnName="past_form" />
+                <ScalarProperty Name="past_participle" ColumnName="past_participle" />
+                <ScalarProperty Name="translate" ColumnName="translate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="prioridade" ColumnName="prioridade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_VerbosIrregulares">
+            <EntityTypeMapping TypeName="FerramentasModel.C_VerbosIrregulares">
+              <MappingFragment StoreEntitySet="_VerbosIrregulares">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="base_form" ColumnName="base_form" />
+                <ScalarProperty Name="past_form" ColumnName="past_form" />
+                <ScalarProperty Name="past_participle" ColumnName="past_participle" />
+                <ScalarProperty Name="translate" ColumnName="translate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="FerramentasModel.Store.fn_verbos" FunctionImportName="fn_verbos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FerramentasModel.fn_verbos_Result">
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
